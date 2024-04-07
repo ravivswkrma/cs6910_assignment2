@@ -31,7 +31,7 @@ import torch.optim as optim
 
 !pip install wandb
 import wandb
-wandb.login(key='1ee7845713d1303ac1abff70cf959518e1ae311c')
+wandb.login(key='8f26d3215193b9c0e8e37007dfbb313be26db111')
 
 """## Loading the dataset"""
 
@@ -51,10 +51,11 @@ class MyCNNModel(nn.Module):
     def __init__(self, num_filter=[64,64,64,64,64], filter_size=[3,3,3,3,3], cnn_act_fun='mish',batch_norm=True,dropout=0.1,dense_size=256,dense_act_fun='mish' ,mystride=2,img_len=224,img_wid=224):
         super(MyCNNModel,self).__init__()
         
-        
+        # Initialize image dimensions
         self.len=img_len
         self.wid=img_wid
 
+        # Calculate the final image dimensions after passing through convolutional layers
         for i in range(5):
              self.len = (self.len - (filter_size[i] - 1)) // mystride#final length of the image
              self.wid = (self.wid - (filter_size[i] - 1)) // mystride#final width of the image
@@ -67,6 +68,7 @@ class MyCNNModel(nn.Module):
         self.dense_act_fun=dense_act_fun
         self.mystride=mystride
 
+        # Dictionary to map activation function strings to PyTorch activation functions
         act_fn = {'relu': nn.ReLU(),'gelu':nn.GELU(),'mish':nn.Mish(),'silu':nn.SiLU()}
 
         self.layers = nn.ModuleList([
@@ -109,7 +111,7 @@ class MyCNNModel(nn.Module):
             nn.Linear(dense_size,10)
 
         ])
- 
+    # Forward pass through all layers
     def forward(self, x):
         for layer in self.layers:
             x = layer(x)
