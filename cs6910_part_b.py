@@ -81,22 +81,30 @@ print(device)
 resnet = torchvision.models.resnet50(pretrained=True)
 
 print(resnet)
-
+# Freeze all parameters of the ResNet model
 for param in resnet.parameters():
     param.requires_grad = False
-
+    
+# Get the number of input features of the last fully connected layer (fc) of the ResNet model
 in_features = resnet.fc.in_features
+
+# Replace the last fully connected layer (fc) with a new one that has 10 output features
 resnet.fc = nn.Linear(in_features, 10)
 
+# Print the shape of trainable parameters of the ResNet model
 for param in resnet.parameters():
     if param.requires_grad:
         print(param.shape)
-
+        
+# Move the ResNet model to the specified device (e.g., GPU)
 import torch.optim as optim
 resnet = resnet.to(device)
+
+# Define loss function and optimizer
 loss_fn = nn.CrossEntropyLoss()
 opt = optim.Adamax(resnet.parameters(), lr=1e-4)
 
+# Function to evaluate the model's performance on a given dataloader
 def evaluation(dataloader ,net,loss_fn ):
     total, correct = 0, 0
     loss_epoch_arr = []
@@ -109,7 +117,8 @@ def evaluation(dataloader ,net,loss_fn ):
         _, pred = torch.max(outputs.data, 1)
         total += labels.size(0)
         correct += (pred == labels).sum().item()
-    
+        
+    # Calculate accuracy and average loss over the dataset
     return 100 * correct / total,sum(loss_epoch_arr)/len(loss_epoch_arr)
 
 # Commented out IPython magic to ensure Python compatibility.
