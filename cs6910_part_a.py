@@ -333,7 +333,8 @@ def main(num_filter=[64,64,64,64,64], filter_size=[3,3,3,3,3], cnn_act_fun='mish
     else:
         trainset = datasets.ImageFolder(trainset,transform)
         testset = datasets.ImageFolder(testset,transform)
-        
+
+    # Split trainset into train and validation sets
     n_val = int(np.floor(0.2 * len(trainset)))
     n_train = len(trainset) - n_val
     trainset,evalset=random_split(trainset,[n_train,n_val])
