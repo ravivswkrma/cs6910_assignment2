@@ -29,6 +29,30 @@ import torchvision
 import torchvision.datasets as datasets
 import torchvision.models as models
 import torchvision.transforms as transforms
+import argparse
+
+# Implemented Arg parse to take input of the hyperparameters from the command.
+# parser = argparse.ArgumentParser(description="Stores all the hyperpamaters for the model.")
+# parser.add_argument("-wp", "--wandb_project",type=str, default="Assignment_2", help="Enter the Name of your Wandb Project")
+# parser.add_argument("-we", "--wandb_entity",type=str, default="cs22m070", help="Wandb Entity used to track experiments in the Weights & Biases dashboard.")
+# parser.add_argument("-e", "--epochs",default="1", type=int, help="Number of epochs to train neural network.")
+# parser.add_argument("-nf", "--num_filters",default="3", type=int, help="Number of filters in the convolutianal neural network.")
+# parser.add_argument("-lr", "--learning_rate",default="0.001", type=float, help="Learning rate used to optimize model parameters")
+# parser.add_argument("-af", "--activ_func",default="ReLU", type=str, choices=["ReLU", "GELU", "Mish", "SiLU"])
+# parser.add_argument("-df", "--dropout_factor",default="0.3", type=float, help="Dropout factor in the cnn")
+# parser.add_argument("-ff", "--filter_factor",default="1", type=float, choices=[1, 0.5, 2])
+
+# args = parser.parse_args()
+
+# wandb_project = args.wandb_project
+# wandb_entity = args.wandb_entity
+# epochs = args.epochs
+# num_filters = args.num_filters
+# learning_rate = args.learning_rate
+# filter_factor = args.filter_factor
+# dropout_factor = args.dropout_factor
+
+# print(wandb_project, wandb_entity, epochs, num_filters, learning_rate, filter_factor, dropout_factor)
 
 """## Preprocessing on the dataset"""
 
