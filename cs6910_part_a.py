@@ -280,7 +280,7 @@ def train():
     
 #wandb.agent(sweep_id,train,count=1)
 
-sweep_id=wandb.sweep(sweep=sweep_config,project="cs6910_CNN")
+sweep_id=wandb.sweep(sweep=sweep_config,project="Assignment_2")
 wandb.agent(sweep_id,train,count=40)
 
 wandb.finish()
@@ -434,7 +434,7 @@ def show_predictions(dataloader=testloader, model=net):
 
 classes=('Amphibia','Animalia','Arachnida','Aves','Fungi','Insecta','Mammalia','Mollusca','Plantae','Reptilia')
 
-sweep_id=wandb.sweep(sweep=sweep_config,project="cs6910_CNN")
+sweep_id=wandb.sweep(sweep=sweep_config,project="Assignment_2")
 wandb.agent(sweep_id,show_predictions,count=1)
 
 wandb.finish()
