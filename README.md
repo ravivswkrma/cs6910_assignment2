@@ -6,7 +6,8 @@ iNaturalist 12k is a subset of the larger iNaturalist dataset that contains arou
 Libraries used
 Pytorch and torchvision
 
-Part A
+Part A:-
+
 Create a compact CNN model comprising five convolutional layers, where each layer is succeeded by an activation function and a max-pooling layer. Following these five conv-activation-maxpool blocks, include a single dense layer and an output layer with ten neurons, corresponding to the ten classes in the dataset. Ensure that the input layer is compatible with the images in the iNaturalist dataset. The code should offer flexibility to adjust parameters such as the number and size of filters, activation functions for both convolutional and dense layers, and the number of neurons in the dense layer.
 Training:
 Wandb framework is used to track the loss and accuracy metrics of training and validation. Moreover, bayesian sweeps have been performed for various hyper parameter configurations. The sweep configuration and default configurations of hyperparameters are specficied as follows:
@@ -18,7 +19,8 @@ sweep_config={
 }, "cnn_act_fun":{ "values":['relu','gelu','mish','silu'] }, "data_aug":{ "values":[True,False] }, "batch_norm": { "values": [True,False] }, "dense_act_fun":{ "values":['relu','gelu','mish','silu'] }, "dropout":{ "values":[0.1,0.2,0.3] }, "dense_size":{ "values":[128,256,512] }, "mystride":{ "values":[2,3,5] } } }
 
 
-Part B
+Part B:-
+
 In most DL applications, instead of training a model from scratch, we would use a model pre-trained on a similar/related task/dataset.I have used Resnet50model.
 I utilized the ResNet50 model for this task.
 
